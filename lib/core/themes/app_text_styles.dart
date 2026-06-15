@@ -14,9 +14,9 @@ class AppTextStyles {
     Color? color,
     double? fontSize,
     FontWeight? fontWeight,
-  }) => GoogleFonts.lexend(
-    fontSize: fontSize ?? _responsiveFontSize(context, 32),
-    fontWeight: fontWeight ?? FontWeight.w600,
+  }) => GoogleFonts.inter(
+    fontSize: fontSize ?? _responsiveFontSize(context, 48), // Increased for Hero
+    fontWeight: fontWeight ?? FontWeight.w800, // Bolder
     letterSpacing: -1.0,
     height: 1.1,
     color: color ?? Theme.of(context).textTheme.bodyLarge?.color,
@@ -27,10 +27,10 @@ class AppTextStyles {
     Color? color,
     double? fontSize,
     FontWeight? fontWeight,
-  }) => GoogleFonts.lexend(
-    fontSize: fontSize ?? _responsiveFontSize(context, 24),
-    fontWeight: fontWeight ?? FontWeight.w500,
-    letterSpacing: -0.2,
+  }) => GoogleFonts.inter(
+    fontSize: fontSize ?? _responsiveFontSize(context, 28), // Slightly larger
+    fontWeight: fontWeight ?? FontWeight.w700, // Bolder
+    letterSpacing: -0.5,
     height: 1.2,
     color: color ?? Theme.of(context).textTheme.bodyLarge?.color,
   );
@@ -41,12 +41,12 @@ class AppTextStyles {
     double? fontSize,
     FontWeight? fontWeight,
     double wordSpacing = 0.2,
-  }) => GoogleFonts.plusJakartaSans(
+  }) => GoogleFonts.inter(
     fontSize: fontSize ?? _responsiveFontSize(context, 18),
     fontWeight: fontWeight ?? FontWeight.w500,
     letterSpacing: -0.2,
     wordSpacing: wordSpacing,
-    height: 1.3,
+    height: 1.4,
     color: color ?? Theme.of(context).textTheme.bodyMedium?.color,
   );
 
@@ -56,11 +56,11 @@ class AppTextStyles {
     double? fontSize,
     FontWeight? fontWeight,
     TextDecoration? decoration,
-  }) => GoogleFonts.plusJakartaSans(
+  }) => GoogleFonts.inter(
     fontSize: fontSize ?? _responsiveFontSize(context, 16),
-    fontWeight: fontWeight ?? FontWeight.w500,
+    fontWeight: fontWeight ?? FontWeight.w400,
     decoration: decoration ?? TextDecoration.none,
-    height: 1.5,
+    height: 1.6,
     letterSpacing: 0.1,
     color: color ?? Theme.of(context).textTheme.bodyMedium?.color,
   );
@@ -71,9 +71,9 @@ class AppTextStyles {
     double? fontSize,
     FontWeight? fontWeight,
     TextDecoration? decoration,
-  }) => GoogleFonts.plusJakartaSans(
+  }) => GoogleFonts.inter(
     fontSize: fontSize ?? _responsiveFontSize(context, 14),
-    fontWeight: fontWeight ?? FontWeight.w500,
+    fontWeight: fontWeight ?? FontWeight.w400,
     decoration: decoration ?? TextDecoration.none,
     letterSpacing: 0.1,
     height: 1.4,
@@ -81,10 +81,10 @@ class AppTextStyles {
   );
 
   static TextStyle button(BuildContext context, {Color? color}) =>
-      GoogleFonts.plusJakartaSans(
-        fontSize: _responsiveFontSize(context, 16),
+      GoogleFonts.inter(
+        fontSize: _responsiveFontSize(context, 15),
         fontWeight: FontWeight.w600,
-        letterSpacing: 0.5,
+        letterSpacing: 0.2,
         color: color ?? Colors.white,
       );
 }

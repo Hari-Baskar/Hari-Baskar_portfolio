@@ -6,8 +6,11 @@ import 'package:praveen_website/core/themes/app_text_styles.dart';
 import 'package:praveen_website/widgets/navbar.dart';
 import 'package:praveen_website/widgets/footer.dart';
 import 'package:praveen_website/widgets/sections/hero_section.dart';
+import 'package:praveen_website/widgets/sections/featured_achievements_section.dart';
+import 'package:praveen_website/widgets/sections/experience_section.dart';
 import 'package:praveen_website/widgets/sections/apps_section.dart';
-import 'package:praveen_website/widgets/sections/features_section.dart';
+import 'package:praveen_website/widgets/sections/skills_section.dart';
+import 'package:praveen_website/widgets/sections/about_section.dart';
 import 'package:praveen_website/widgets/sections/contact_section.dart';
 import 'package:praveen_website/core/styles/app_size.dart';
 
@@ -20,11 +23,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
-  final GlobalKey _heroKey = GlobalKey();
-  final GlobalKey _appsKey = GlobalKey();
-  final GlobalKey _featuresKey = GlobalKey();
+  
+  final GlobalKey _homeKey = GlobalKey();
+  final GlobalKey _experienceKey = GlobalKey();
+  final GlobalKey _productsKey = GlobalKey();
+  final GlobalKey _skillsKey = GlobalKey();
+  final GlobalKey _aboutKey = GlobalKey();
   final GlobalKey _contactKey = GlobalKey();
-  final GlobalKey _supportKey = GlobalKey();
 
   void _scrollToSection(GlobalKey key) {
     final context = key.currentContext;
@@ -40,6 +45,86 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: Drawer(
+        child: Container(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.darkSecondaryBackgroundColor
+                      : AppColors.lightSecondaryBackgroundColor,
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Theme.of(context).dividerColor.withOpacity(0.1),
+                    ),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'Menu',
+                    style: AppTextStyles.heading(
+                      context,
+                      fontSize: AppSize.headingMedium,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              _DrawerItem(
+                icon: Icons.home,
+                title: 'Home',
+                onTap: () {
+                  Navigator.pop(context);
+                  _scrollToSection(_homeKey);
+                },
+              ),
+              _DrawerItem(
+                icon: Icons.timeline,
+                title: 'Experience',
+                onTap: () {
+                  Navigator.pop(context);
+                  _scrollToSection(_experienceKey);
+                },
+              ),
+              _DrawerItem(
+                icon: Icons.apps,
+                title: 'Products',
+                onTap: () {
+                  Navigator.pop(context);
+                  _scrollToSection(_productsKey);
+                },
+              ),
+              _DrawerItem(
+                icon: Icons.code,
+                title: 'Skills',
+                onTap: () {
+                  Navigator.pop(context);
+                  _scrollToSection(_skillsKey);
+                },
+              ),
+              _DrawerItem(
+                icon: Icons.person_outline,
+                title: 'About',
+                onTap: () {
+                  Navigator.pop(context);
+                  _scrollToSection(_aboutKey);
+                },
+              ),
+              _DrawerItem(
+                icon: Icons.mail_outline,
+                title: 'Contact',
+                onTap: () {
+                  Navigator.pop(context);
+                  _scrollToSection(_contactKey);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -47,24 +132,25 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 HeroSection(
-                  key: _heroKey,
+                  key: _homeKey,
                   onContactPressed: () => _scrollToSection(_contactKey),
-                  onViewAppsPressed: () => _scrollToSection(_appsKey),
+                  onViewAppsPressed: () => _scrollToSection(_productsKey),
                 ),
-                AppsSection(key: _appsKey),
-                FeaturesSection(key: _featuresKey),
+                const CoreExpertiseSection(),
+                ExperienceSection(key: _experienceKey),
+                AppsSection(key: _productsKey),
+                SkillsSection(key: _skillsKey),
+                AboutSection(key: _aboutKey),
                 ContactSection(key: _contactKey),
 
-                _SimpleSection(
-                  key: _supportKey,
-                  title: 'Support',
-                  subtitle: 'Have questions? We\'re here to help you 24/7.',
-                ),
-
                 Footer(
+                  onHomePressed: () => _scrollToSection(_homeKey),
+                  onExperiencePressed: () => _scrollToSection(_experienceKey),
+                  onProductsPressed: () => _scrollToSection(_productsKey),
+                  onContactPressed: () => _scrollToSection(_contactKey),
                   onPrivacyPressed: () => context.push('/privacy-policy'),
                   onTermsPressed: () => context.push('/terms'),
-                  onSupportPressed: () => _scrollToSection(_supportKey),
+                  onSupportPressed: () => context.push('/support'),
                 ),
               ],
             ),
@@ -73,11 +159,15 @@ class _HomeScreenState extends State<HomeScreen> {
             top: 0,
             left: 0,
             right: 0,
-            child: Navbar(
-              onAppsPressed: () => _scrollToSection(_appsKey),
-              onFeaturesPressed: () => _scrollToSection(_featuresKey),
-              onAboutPressed: () => _scrollToSection(_heroKey),
-              onSupportPressed: () => _scrollToSection(_supportKey),
+            child: SafeArea(
+              child: Navbar(
+                onHomePressed: () => _scrollToSection(_homeKey),
+                onExperiencePressed: () => _scrollToSection(_experienceKey),
+                onProductsPressed: () => _scrollToSection(_productsKey),
+                onSkillsPressed: () => _scrollToSection(_skillsKey),
+                onAboutPressed: () => _scrollToSection(_aboutKey),
+                onContactPressed: () => _scrollToSection(_contactKey),
+              ),
             ),
           ),
         ],
@@ -92,63 +182,29 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class _SimpleSection extends StatelessWidget {
+class _DrawerItem extends StatelessWidget {
+  final IconData icon;
   final String title;
-  final String subtitle;
+  final VoidCallback onTap;
 
-  const _SimpleSection({
-    super.key,
+  const _DrawerItem({
+    required this.icon,
     required this.title,
-    required this.subtitle,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        vertical: AppSpacing.h64 * 1.5,
+    return ListTile(
+      leading: Icon(icon, color: AppColors.darkSecondaryText),
+      title: Text(
+        title,
+        style: AppTextStyles.body(context, fontWeight: FontWeight.w600),
+      ),
+      onTap: onTap,
+      contentPadding: EdgeInsets.symmetric(
         horizontal: AppSpacing.w24,
-      ),
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(
-            color: Theme.of(context).dividerColor.withOpacity(0.1),
-          ),
-        ),
-      ),
-      child: Column(
-        children: [
-          Text(
-            title,
-            style: AppTextStyles.splashHeading(
-              context,
-              fontSize: AppSize.headingLarge,
-            ),
-          ),
-          SizedBox(height: AppSpacing.h16),
-          Text(
-            subtitle,
-            textAlign: TextAlign.center,
-            style: AppTextStyles.subtitle(
-              context,
-              color: AppColors.darkSecondaryText,
-            ),
-          ),
-          SizedBox(height: AppSpacing.h64),
-          // Placeholder for actual policy/terms text
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: AppSize.maxTextWidth),
-            child: Text(
-              'At Praveen Apps, we are committed to providing exceptional experiences through our applications. We value your feedback and are always here to support you in using our products effectively.',
-              style: AppTextStyles.body(
-                context,
-                color: AppColors.darkSecondaryText,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
+        vertical: AppSpacing.h12,
       ),
     );
   }

@@ -8,6 +8,7 @@ import 'package:praveen_website/screens/support_screen.dart';
 import 'package:praveen_website/screens/terms_conditions_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:praveen_website/firebase_options.dart';
+import 'package:toastification/toastification.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,13 +37,15 @@ class PraveenAppsApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp.router(
-          title: 'Praveen Apps',
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: ThemeMode.light,
-          routerConfig: _router,
+        return ToastificationWrapper(
+          child: MaterialApp.router(
+            title: 'Praveen Apps',
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.light,
+            routerConfig: _router,
+          ),
         );
       },
     );

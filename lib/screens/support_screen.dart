@@ -33,7 +33,10 @@ class SupportScreen extends StatelessWidget {
                     SizedBox(width: AppSpacing.w24),
                     Text(
                       'Support',
-                      style: AppTextStyles.splashHeading(context, fontSize: AppSize.headingLarge),
+                      style: AppTextStyles.splashHeading(
+                        context,
+                        fontSize: AppSize.headingLarge,
+                      ),
                     ),
                   ],
                 ),
@@ -46,7 +49,10 @@ class SupportScreen extends StatelessWidget {
                     children: [
                       Text(
                         'How can we help you?',
-                        style: AppTextStyles.body(context, fontSize: AppSize.headingSmall),
+                        style: AppTextStyles.body(
+                          context,
+                          fontSize: AppSize.headingSmall,
+                        ),
                       ),
                       SizedBox(height: AppSpacing.h24),
                       Text(
@@ -58,6 +64,11 @@ class SupportScreen extends StatelessWidget {
                 ),
                 SizedBox(height: AppSpacing.h64),
                 Footer(
+                  onHomePressed: () => context.go('/'),
+
+                  onExperiencePressed: () => context.go('/'),
+                  onProductsPressed: () => context.go('/'),
+                  onContactPressed: () => context.go('/'),
                   onPrivacyPressed: () => context.go('/privacy-policy'),
                   onTermsPressed: () => context.go('/terms'),
                   onSupportPressed: () => context.go('/support'),
@@ -70,10 +81,13 @@ class SupportScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: Navbar(
-              onAppsPressed: () => context.go('/'),
-              onFeaturesPressed: () => context.go('/'),
+              onHomePressed: () => context.go('/'),
+
+              onExperiencePressed: () => context.go('/'),
+              onSkillsPressed: () => context.go('/'),
+              onProductsPressed: () => context.go('/'),
               onAboutPressed: () => context.go('/'),
-              onSupportPressed: () => context.go('/support'),
+              onContactPressed: () => context.go('/'),
             ),
           ),
         ],

@@ -33,7 +33,10 @@ class PrivacyPolicyScreen extends StatelessWidget {
                     SizedBox(width: AppSpacing.w24),
                     Text(
                       'Privacy Policy',
-                      style: AppTextStyles.splashHeading(context, fontSize: AppSize.headingLarge),
+                      style: AppTextStyles.splashHeading(
+                        context,
+                        fontSize: AppSize.headingLarge,
+                      ),
                     ),
                   ],
                 ),
@@ -41,7 +44,9 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: AppSpacing.w24),
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: AppSize.maxTextWidth),
+                    constraints: const BoxConstraints(
+                      maxWidth: AppSize.maxTextWidth,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -52,7 +57,11 @@ class PrivacyPolicyScreen extends StatelessWidget {
                         SizedBox(height: AppSpacing.h24),
                         Text(
                           '1. Information We Collect',
-                          style: AppTextStyles.heading(context, fontSize: AppSize.headingSmall, fontWeight: FontWeight.bold),
+                          style: AppTextStyles.heading(
+                            context,
+                            fontSize: AppSize.headingSmall,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         SizedBox(height: AppSpacing.h12),
                         Text(
@@ -62,7 +71,11 @@ class PrivacyPolicyScreen extends StatelessWidget {
                         SizedBox(height: AppSpacing.h24),
                         Text(
                           '2. Data Storage',
-                          style: AppTextStyles.heading(context, fontSize: AppSize.headingSmall, fontWeight: FontWeight.bold),
+                          style: AppTextStyles.heading(
+                            context,
+                            fontSize: AppSize.headingSmall,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         SizedBox(height: AppSpacing.h12),
                         Text(
@@ -72,7 +85,11 @@ class PrivacyPolicyScreen extends StatelessWidget {
                         SizedBox(height: AppSpacing.h24),
                         Text(
                           '3. Third-Party Sharing',
-                          style: AppTextStyles.heading(context, fontSize: AppSize.headingSmall, fontWeight: FontWeight.bold),
+                          style: AppTextStyles.heading(
+                            context,
+                            fontSize: AppSize.headingSmall,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         SizedBox(height: AppSpacing.h12),
                         Text(
@@ -84,6 +101,11 @@ class PrivacyPolicyScreen extends StatelessWidget {
                   ),
                 ),
                 Footer(
+                  onHomePressed: () => context.go('/'),
+
+                  onExperiencePressed: () => context.go('/'),
+                  onProductsPressed: () => context.go('/'),
+                  onContactPressed: () => context.go('/'),
                   onPrivacyPressed: () => context.go('/privacy-policy'),
                   onTermsPressed: () => context.go('/terms'),
                   onSupportPressed: () => context.go('/support'),
@@ -96,10 +118,13 @@ class PrivacyPolicyScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: Navbar(
-              onAppsPressed: () => context.go('/'),
-              onFeaturesPressed: () => context.go('/'),
+              onHomePressed: () => context.go('/'),
+
+              onExperiencePressed: () => context.go('/'),
+              onSkillsPressed: () => context.go('/'),
+              onProductsPressed: () => context.go('/'),
               onAboutPressed: () => context.go('/'),
-              onSupportPressed: () => context.go('/support'),
+              onContactPressed: () => context.go('/'),
             ),
           ),
         ],

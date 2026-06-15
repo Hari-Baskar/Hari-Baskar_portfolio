@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AppSize {
   // Common Box Sizes
   static const double iconSmall = 24.0;
@@ -28,4 +30,6 @@ class AppSize {
   static const double headingSmall = 20.0;
 
   static const double appCardMinHeight = 380.0;
+  static double screenHeight(BuildContext context) => MediaQuery.sizeOf(context).height;
+  static double screenWidth(BuildContext context) => MediaQuery.sizeOf(context).width;
 }

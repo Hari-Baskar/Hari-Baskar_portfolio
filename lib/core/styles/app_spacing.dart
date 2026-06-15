@@ -16,6 +16,8 @@ class AppSpacing {
   static double get w16 => 16.0;
   static double get w24 => 24.0;
   static double get w32 => 32.0;
+  static double get w48 => 48.0;
+  static double get w64 => 64.0;
 
   static double get h2 => 2.0;
   static double get h4 => 4.0;
@@ -26,4 +28,6 @@ class AppSpacing {
   static double get h32 => 32.0;
   static double get h48 => 48.0;
   static double get h64 => 64.0;
+  static double get h96 => 96.0;
+  static double get h128 => 128.0;
 }

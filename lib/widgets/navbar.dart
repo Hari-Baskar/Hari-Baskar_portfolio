@@ -3,20 +3,23 @@ import 'package:praveen_website/core/themes/app_colors.dart';
 import 'package:praveen_website/core/themes/app_text_styles.dart';
 import 'package:praveen_website/core/styles/app_spacing.dart';
 import 'package:praveen_website/core/styles/app_size.dart';
-import 'package:praveen_website/widgets/common/app_logo.dart';
 
 class Navbar extends StatelessWidget {
+  final VoidCallback onHomePressed;
+  final VoidCallback onExperiencePressed;
+  final VoidCallback onProductsPressed;
+  final VoidCallback onSkillsPressed;
   final VoidCallback onAboutPressed;
-  final VoidCallback onAppsPressed;
-  final VoidCallback onFeaturesPressed;
-  final VoidCallback onSupportPressed;
+  final VoidCallback onContactPressed;
 
   const Navbar({
     super.key,
+    required this.onHomePressed,
+    required this.onExperiencePressed,
+    required this.onProductsPressed,
+    required this.onSkillsPressed,
     required this.onAboutPressed,
-    required this.onAppsPressed,
-    required this.onFeaturesPressed,
-    required this.onSupportPressed,
+    required this.onContactPressed,
   });
 
   @override
@@ -48,14 +51,31 @@ class Navbar extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: onAboutPressed,
+            onTap: onHomePressed,
             child: Row(
               children: [
+                Container(
+                  padding: EdgeInsets.all(AppSpacing.w8),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryAccent.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    'HB',
+                    style: AppTextStyles.heading(
+                      context,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.primaryAccent,
+                    ),
+                  ),
+                ),
+                SizedBox(width: AppSpacing.w12),
                 Text(
-                  'Praveen Apps',
+                  'Hari Baskar K',
                   style: AppTextStyles.heading(
                     context,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -63,17 +83,24 @@ class Navbar extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          if (MediaQuery.of(context).size.width > AppSize.tabletBreakpoint)
+          if (MediaQuery.of(context).size.width > 900) // Increased breakpoint for more items
             Row(
               children: [
+                _NavLink(context, 'Home', onHomePressed),
+                _NavLink(context, 'Experience', onExperiencePressed),
+                _NavLink(context, 'Products', onProductsPressed),
+                _NavLink(context, 'Skills', onSkillsPressed),
                 _NavLink(context, 'About', onAboutPressed),
-                _NavLink(context, 'Apps', onAppsPressed),
-                _NavLink(context, 'Features', onFeaturesPressed),
-                _NavLink(context, 'Support', onSupportPressed),
+                _NavLink(context, 'Contact', onContactPressed),
               ],
             )
           else
-            IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
+            IconButton(
+              icon: const Icon(Icons.menu), 
+              onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+            ),
         ],
       ),
     );
@@ -85,7 +112,7 @@ class Navbar extends StatelessWidget {
       style: TextButton.styleFrom(foregroundColor: AppColors.darkSecondaryText),
       child: Text(
         title,
-        style: AppTextStyles.body(context, fontWeight: FontWeight.w600),
+        style: AppTextStyles.body(context, fontWeight: FontWeight.w600, fontSize: 14),
       ),
     );
   }

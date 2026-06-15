@@ -1,0 +1,1 @@
+import 'dart:io'; import 'dart:convert'; void main() async { var r = await HttpClient().getUrl(Uri.parse('https://play.google.com/store/search?q=Coconut%20Market&c=apps&hl=en')); var res = await r.close(); var body = await res.transform(Utf8Decoder()).join(); var match = RegExp(r'src=\"(https://play-lh.googleusercontent.com/[^\"]+)\"').firstMatch(body); print(match?.group(1)); }
