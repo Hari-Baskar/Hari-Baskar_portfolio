@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "924582177884",
+    "project_id": "haribaskar-portfolio",
+    "storage_bucket": "haribaskar-portfolio.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924582177884:android:d03a47c53822a747faca99",
+        "android_client_info": {
+          "package_name": "com.praveen.praveen_website"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMdHWZQwxgZ-_IsNyQP3x5Cr69YX232aI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

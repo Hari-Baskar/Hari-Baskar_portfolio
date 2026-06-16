@@ -21,25 +21,13 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -53,12 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCdXE_MbkQhM-TlKQtoZCsfn8LG4bcvp7M',
-    appId: '1:320237612885:web:e4ad7192a983684116c9dc',
-    messagingSenderId: '320237612885',
-    projectId: 'praveenwebsite-e9b5e',
-    authDomain: 'praveenwebsite-e9b5e.firebaseapp.com',
-    storageBucket: 'praveenwebsite-e9b5e.firebasestorage.app',
-    measurementId: 'G-738725SZ78',
+    apiKey: 'AIzaSyAXkAAfgTZS3r-hmR7Z1dDQryxf4TeVnB0',
+    appId: '1:924582177884:web:189ae4d0646091e4faca99',
+    messagingSenderId: '924582177884',
+    projectId: 'haribaskar-portfolio',
+    authDomain: 'haribaskar-portfolio.firebaseapp.com',
+    storageBucket: 'haribaskar-portfolio.firebasestorage.app',
+    measurementId: 'G-F70628DE2Y',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyB92Ncq6mNZQ3j3PeRCerZFkyTUPM0X5aw',
+    appId: '1:924582177884:ios:8669bd5855d3ee00faca99',
+    messagingSenderId: '924582177884',
+    projectId: 'haribaskar-portfolio',
+    storageBucket: 'haribaskar-portfolio.firebasestorage.app',
+    iosBundleId: 'com.praveen.praveenWebsite',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyB92Ncq6mNZQ3j3PeRCerZFkyTUPM0X5aw',
+    appId: '1:924582177884:ios:8669bd5855d3ee00faca99',
+    messagingSenderId: '924582177884',
+    projectId: 'haribaskar-portfolio',
+    storageBucket: 'haribaskar-portfolio.firebasestorage.app',
+    iosBundleId: 'com.praveen.praveenWebsite',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAMdHWZQwxgZ-_IsNyQP3x5Cr69YX232aI',
+    appId: '1:924582177884:android:d03a47c53822a747faca99',
+    messagingSenderId: '924582177884',
+    projectId: 'haribaskar-portfolio',
+    storageBucket: 'haribaskar-portfolio.firebasestorage.app',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyAXkAAfgTZS3r-hmR7Z1dDQryxf4TeVnB0',
+    appId: '1:924582177884:web:a04c29e3c29732b6faca99',
+    messagingSenderId: '924582177884',
+    projectId: 'haribaskar-portfolio',
+    authDomain: 'haribaskar-portfolio.firebaseapp.com',
+    storageBucket: 'haribaskar-portfolio.firebasestorage.app',
+    measurementId: 'G-7N6GV1FMHL',
+  );
+
 }
