@@ -221,7 +221,7 @@ class HeroSection extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('View Apps', style: AppTextStyles.button(context)),
+                      Text('View Aps', style: AppTextStyles.button(context)),
                       SizedBox(width: AppSpacing.w8),
                       Icon(LucideIcons.arrowRight, size: AppSize.iconSmall),
                     ],
@@ -232,7 +232,7 @@ class HeroSection extends StatelessWidget {
                 .slideY(begin: 0.2, end: 0),
             OutlinedButton(
                   onPressed: () => LinkHelper.launchURL(
-                    'assets/assets/resume.pdf',
+                    'assets/resume.pdf',
                   ), // Update this link with your actual resume URL or file!
                   style: OutlinedButton.styleFrom(
                     foregroundColor: isDark
