@@ -1,6 +1,7 @@
 {
   "projects": {
-    "y": "haribaskar-portfolio"
+    "y": "haribaskar-portfolio",
+    "default": "haribaskar-portfolio"
   },
   "targets": {},
   "etags": {}
