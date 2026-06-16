@@ -232,7 +232,7 @@ class HeroSection extends StatelessWidget {
                 .slideY(begin: 0.2, end: 0),
             OutlinedButton(
                   onPressed: () => LinkHelper.launchURL(
-                    'assets/resume.pdf',
+                    'assets/assets/resume.pdf',
                   ), // Update this link with your actual resume URL or file!
                   style: OutlinedButton.styleFrom(
                     foregroundColor: isDark
