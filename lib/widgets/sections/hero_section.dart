@@ -221,7 +221,7 @@ class HeroSection extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('View Aps', style: AppTextStyles.button(context)),
+                      Text('View ', style: AppTextStyles.button(context)),
                       SizedBox(width: AppSpacing.w8),
                       Icon(LucideIcons.arrowRight, size: AppSize.iconSmall),
                     ],
