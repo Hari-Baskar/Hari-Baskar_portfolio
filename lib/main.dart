@@ -39,7 +39,7 @@ class PraveenAppsApp extends StatelessWidget {
       builder: (context, child) {
         return ToastificationWrapper(
           child: MaterialApp.router(
-            title: 'Praveen Apps',
+            title: 'Hari Baskar Portfolio',
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,

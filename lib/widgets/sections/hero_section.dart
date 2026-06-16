@@ -131,31 +131,14 @@ class HeroSection extends StatelessWidget {
 
         ConstrainedBox(
               constraints: BoxConstraints(maxWidth: isDesktop ? 500 : 600),
-              child: RichText(
+              child: Text(
+                'Passionate about transforming ideas into production-ready applications using modern technologies.',
                 textAlign: textAlign,
-                text: TextSpan(
-                  style: AppTextStyles.body(
-                    context,
-                    color: isDark
-                        ? AppColors.darkSecondaryText
-                        : AppColors.lightSecondaryText,
-                  ),
-                  children: [
-                    const TextSpan(
-                      text:
-                          'Passionate about transforming ideas into production-ready applications using ',
-                    ),
-                    TextSpan(
-                      text: 'Flutter, Firebase, Fast Api, Postgres, Aws',
-                      style: AppTextStyles.body(
-                        context,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: isDark ? AppColors.white : AppColors.lightText,
-                      ),
-                    ),
-                    const TextSpan(text: ', and modern technologies.'),
-                  ],
+                style: AppTextStyles.body(
+                  context,
+                  color: isDark
+                      ? AppColors.darkSecondaryText
+                      : AppColors.lightSecondaryText,
                 ),
               ),
             )

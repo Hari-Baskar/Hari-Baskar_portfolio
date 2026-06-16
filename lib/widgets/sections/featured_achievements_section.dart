@@ -15,58 +15,67 @@ class CoreExpertiseSection extends StatelessWidget {
 
     final expertiseList = [
       {
-        'order': 1,
+        'order': 6,
         'title': 'Architecture',
         'subtitle': 'Riverpod • Feature First Architecture',
         'icon': SimpleIcons.dart,
+        'iconColor': const Color(0xFF0175C2), // Dart Blue
       },
       {
-        'order': 2,
+        'order': 5,
         'title': 'Backend Integration',
         'subtitle': 'REST APIs • Firebase • FastAPI',
         'icon': SimpleIcons.firebase,
-      },
-      {
-        'order': 3,
-        'title': 'Real-Time Systems',
-        'subtitle': 'Sockets • Chat Systems',
-        'icon': SimpleIcons.socketdotio,
+        'iconColor': const Color(0xFFFFCA28), // Firebase Yellow
       },
       {
         'order': 4,
+        'title': 'Real-Time Systems',
+        'subtitle': 'Sockets • Chat Systems',
+        'icon': SimpleIcons.socketdotio,
+        'iconColor': const Color(0xFF010101), // Socket.io Black
+      },
+      {
+        'order': 1,
         'title': 'Product Development',
         'subtitle': 'Flutter Mobile • Flutter Web',
         'icon': SimpleIcons.flutter,
+        'iconColor': const Color(0xFF02569B), // Flutter Blue
       },
       {
         'order': 5,
         'title': 'Monitoring',
         'subtitle': 'Crashlytics • Analytics • Performance',
         'icon': SimpleIcons.googleanalytics,
+        'iconColor': const Color(0xFFE37400), // Analytics Orange
       },
       {
-        'order': 6,
+        'order': 2,
         'title': 'AI Integrations',
         'subtitle': 'Gemini API • OpenAI API',
         'icon': SimpleIcons.googlegemini,
+        'iconColor': const Color(0xFF8E75B2), // Gemini Purple
       },
       {
         'order': 7,
         'title': 'Deep Linking',
         'subtitle': 'Deferred Deep Linking (Android & iOS)',
         'icon': SimpleIcons.android,
+        'iconColor': const Color(0xFF3DDC84), // Android Green
       },
       {
         'order': 8,
         'title': 'Databases',
         'subtitle': 'PostgreSQL • Firebase • MongoDB',
         'icon': SimpleIcons.postgresql,
+        'iconColor': const Color(0xFF336791), // Postgres Blue
       },
       {
-        'order': 9,
+        'order': 3,
         'title': 'Payment Gateways',
         'subtitle': 'Razorpay Integration',
         'icon': SimpleIcons.razorpay,
+        'iconColor': const Color(0xFF02042B), // Razorpay Blue
       },
     ];
 
@@ -124,6 +133,7 @@ class CoreExpertiseSection extends StatelessWidget {
                         title: expertise['title'] as String,
                         subtitle: expertise['subtitle'] as String,
                         icon: expertise['icon'] as IconData,
+                        iconColor: expertise['iconColor'] as Color,
                       ),
                     )
                     .toList(),
@@ -140,11 +150,13 @@ class _ExpertiseCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
+  final Color iconColor;
 
   const _ExpertiseCard({
     required this.title,
     required this.subtitle,
     required this.icon,
+    required this.iconColor,
   });
 
   @override
@@ -181,10 +193,17 @@ class _ExpertiseCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.primaryAccent.withOpacity(0.1),
+                color: Colors.white, // Pure white background for the icon as requested
                 borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
-              child: Icon(icon, color: AppColors.primaryAccent, size: 36),
+              child: Icon(icon, color: iconColor, size: 36), // Use brand color
             ),
             SizedBox(height: AppSpacing.h24),
             Text(

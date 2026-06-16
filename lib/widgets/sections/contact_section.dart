@@ -66,6 +66,7 @@ class ContactSection extends StatelessWidget {
                       icon: LucideIcons.mail,
                       title: 'Email',
                       value: 'haribaskark303@gmail.com',
+                      iconColor: const Color(0xFFEA4335), // Google/Gmail Red
                       onTap: () =>
                           LinkHelper.sendEmail('haribaskark303@gmail.com'),
                     ),
@@ -76,6 +77,7 @@ class ContactSection extends StatelessWidget {
                       icon: LucideIcons.linkedin,
                       title: 'LinkedIn',
                       value: 'Hari Baskar', // Subtitle text instead of link
+                      iconColor: const Color(0xFF0077B5), // LinkedIn Blue
                       onTap: () => LinkHelper.launchURL(
                         'https://www.linkedin.com/in/hari-baskar%E2%86%97%EF%B8%8F/',
                       ),
@@ -87,6 +89,7 @@ class ContactSection extends StatelessWidget {
                       icon: LucideIcons.github,
                       title: 'GitHub',
                       value: 'Hari Baskar', // Subtitle text instead of link
+                      iconColor: const Color(0xFF181717), // GitHub Black
                       onTap: () => LinkHelper.launchURL(
                         'https://github.com/Hari-Baskar',
                       ),
@@ -98,6 +101,7 @@ class ContactSection extends StatelessWidget {
                       icon: LucideIcons.fileText,
                       title: 'Resume',
                       value: 'Download Portfolio Resume',
+                      iconColor: AppColors.primaryAccent, // Keep brand color for resume
                       onTap: () {
                         LinkHelper.launchURL('assets/resume.pdf');
                       }, // Action to download resume
@@ -118,12 +122,14 @@ class _ContactMethodCard extends StatelessWidget {
   final String title;
   final String value;
   final VoidCallback onTap;
+  final Color iconColor;
 
   const _ContactMethodCard({
     required this.icon,
     required this.title,
     required this.value,
     required this.onTap,
+    required this.iconColor,
   });
 
   @override
@@ -157,10 +163,17 @@ class _ContactMethodCard extends StatelessWidget {
               width: 56,
               height: 56,
               decoration: BoxDecoration(
-                color: AppColors.primaryAccent.withOpacity(0.1),
+                color: Colors.white, // Pure white background
                 borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
-              child: Icon(icon, color: AppColors.primaryAccent, size: 24),
+              child: Icon(icon, color: iconColor, size: 24), // Use brand color
             ),
             const SizedBox(width: 16),
             Expanded(
