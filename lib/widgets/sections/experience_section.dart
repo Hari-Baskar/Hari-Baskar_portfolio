@@ -50,23 +50,8 @@ class ExperienceSection extends StatelessWidget {
               children: [
                 Text(
                   'EXPERIENCE',
-                  style: AppTextStyles.heading(
-                    context,
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppTextStyles.splashHeading(context, fontSize: 32),
                 ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.1, end: 0),
-
-                SizedBox(height: AppSpacing.h16),
-
-                Container(
-                  width: 80,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryAccent,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ).animate().fadeIn(delay: 200.ms).scaleX(),
 
                 SizedBox(height: AppSpacing.h64),
 

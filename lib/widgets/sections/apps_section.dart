@@ -25,10 +25,10 @@ class AppsSection extends StatelessWidget {
         'existingSolutions': 'The market offers a terrible choice: either waste hours on soul-crushing manual data entry, or hand over your highly sensitive bank login credentials to third parties, putting your financial security and privacy at serious risk.',
         'solution': 'Finzo intelligently extracts every detail from your transaction SMS—including bank name, payment method, amount, date, and time. It runs entirely on-device, meaning your data never leaves your phone.',
         'features': [
-          'Auto & manual sub-categorization',
+          'Auto-categorization with manual sub-categories',
           'Detailed expense analysis & charts',
           'Export reports as PDF, Excel, or CSV',
-          '100% offline, secure, & private'
+          'Secure & private'
         ],
       },
     ];

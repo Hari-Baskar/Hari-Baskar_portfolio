@@ -103,23 +103,8 @@ class CoreExpertiseSection extends StatelessWidget {
             children: [
               Text(
                 'Core Expertise',
-                style: AppTextStyles.heading(
-                  context,
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppTextStyles.splashHeading(context, fontSize: 32),
               ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.1, end: 0),
-
-              SizedBox(height: AppSpacing.h16),
-
-              Container(
-                width: 60,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryAccent,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ).animate().fadeIn(delay: 200.ms).scaleX(),
 
               SizedBox(height: AppSpacing.h48),
 
@@ -193,7 +178,8 @@ class _ExpertiseCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.white, // Pure white background for the icon as requested
+                color: Colors
+                    .white, // Pure white background for the icon as requested
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(

@@ -30,11 +30,7 @@ class ContactSection extends StatelessWidget {
               Text(
                 'Let\'s Build Something Together',
                 textAlign: TextAlign.center,
-                style: AppTextStyles.heading(
-                  context,
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppTextStyles.splashHeading(context, fontSize: 32),
               ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.1, end: 0),
 
               SizedBox(height: AppSpacing.h24),

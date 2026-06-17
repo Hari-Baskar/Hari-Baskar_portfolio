@@ -26,11 +26,7 @@ class AboutSection extends StatelessWidget {
         children: [
           Text(
             'About Me',
-            style: AppTextStyles.heading(
-              context,
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppTextStyles.splashHeading(context, fontSize: 32),
           ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.1, end: 0),
 
           SizedBox(height: AppSpacing.h48),
