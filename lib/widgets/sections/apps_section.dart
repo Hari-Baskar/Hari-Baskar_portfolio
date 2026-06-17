@@ -91,7 +91,8 @@ class _AppCard extends StatelessWidget {
     final isDesktop = MediaQuery.of(context).size.width > 900;
     final primaryColor = app['color'] as Color;
 
-    Widget problemSection = Container(
+    // --- BOTTOM CONTEXT CARDS ---
+    Widget problemCard = Container(
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
         color: AppColors.lightSecondaryBackgroundColor,
@@ -110,7 +111,20 @@ class _AppCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(app['problem'], style: AppTextStyles.body(context, color: AppColors.darkSecondaryText, fontSize: 16)),
-          const SizedBox(height: 32),
+        ],
+      ),
+    );
+
+    Widget existingSolutionsCard = Container(
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+        color: AppColors.lightSecondaryBackgroundColor,
+        borderRadius: BorderRadius.circular(32),
+        border: Border.all(color: Colors.grey.withOpacity(0.2)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Row(
             children: [
               const Icon(LucideIcons.xCircle, color: Colors.orangeAccent, size: 28),
@@ -124,50 +138,12 @@ class _AppCard extends StatelessWidget {
       ),
     );
 
-    Widget solutionSection = Container(
-      padding: const EdgeInsets.all(32),
-      decoration: BoxDecoration(
-        color: primaryColor.withOpacity(0.05),
-        borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: primaryColor.withOpacity(0.2)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(LucideIcons.checkCircle2, color: primaryColor, size: 28),
-              const SizedBox(width: 12),
-              Expanded(child: Text('The Solution', style: AppTextStyles.heading(context, fontSize: 24, fontWeight: FontWeight.w800, color: primaryColor))),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Text(app['solution'], style: AppTextStyles.body(context, color: AppColors.darkSecondaryText, fontSize: 16)),
-          const SizedBox(height: 32),
-          Text('Key Features', style: AppTextStyles.heading(context, fontSize: 20, fontWeight: FontWeight.w800)),
-          const SizedBox(height: 16),
-          ...((app['features'] as List<String>).map((feature) => Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(LucideIcons.sparkles, color: primaryColor, size: 20),
-                const SizedBox(width: 12),
-                Expanded(child: Text(feature, style: AppTextStyles.body(context, fontSize: 16))),
-              ],
-            ),
-          ))),
-        ],
-      ),
-    );
-
-    Widget appIdentitySection = Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
+    // --- TOP PRODUCT HERO CARD ---
+    Widget productInfoAndFeatures = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Logo and Name
+        // App Identity
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(12),
@@ -189,61 +165,99 @@ class _AppCard extends StatelessWidget {
             Flexible(child: Text(app['name'], style: AppTextStyles.heading(context, fontSize: 36, fontWeight: FontWeight.w800))),
           ],
         ),
+        const SizedBox(height: 24),
+        // Description / Solution Text
+        Text(app['solution'], style: AppTextStyles.body(context, color: AppColors.darkSecondaryText, fontSize: 18)),
         const SizedBox(height: 32),
-        // Mockup
-        app['mockupAsset'] != null
-            ? Image.asset(
-                app['mockupAsset'] as String,
-                fit: BoxFit.contain,
-                filterQuality: FilterQuality.high,
-                isAntiAlias: true,
-              )
-            : _buildMockupPlaceholder(context),
-        const SizedBox(height: 32),
-        // Play Button
+        // Features
+        Text('Key Features', style: AppTextStyles.heading(context, fontSize: 20, fontWeight: FontWeight.w800)),
+        const SizedBox(height: 16),
+        ...((app['features'] as List<String>).map((feature) => Padding(
+          padding: const EdgeInsets.only(bottom: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(LucideIcons.sparkles, color: primaryColor, size: 20),
+              const SizedBox(width: 12),
+              Expanded(child: Text(feature, style: AppTextStyles.body(context, fontSize: 16))),
+            ],
+          ),
+        ))),
+        const SizedBox(height: 48),
+        // CTA
         _buildPlayButton(context, primaryColor),
       ],
     );
 
-    return Container(
-      padding: EdgeInsets.all(isDesktop ? AppSpacing.h64 : AppSpacing.h32),
+    Widget largeMockup = app['mockupAsset'] != null
+        ? Image.asset(
+            app['mockupAsset'] as String,
+            fit: BoxFit.contain,
+            filterQuality: FilterQuality.high,
+            isAntiAlias: true,
+          )
+        : _buildMockupPlaceholder(context);
+
+    Widget topProductCard = Container(
+      padding: EdgeInsets.all(isDesktop ? 48 : 32),
       decoration: BoxDecoration(
-        color: Colors.white, // Premium clean white card background
-        borderRadius: BorderRadius.circular(48), // Huge soft border radius
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 40,
-            offset: const Offset(0, 20),
-          ),
-          BoxShadow(
-            color: primaryColor.withOpacity(0.05), // Subtle glow of brand color
-            blurRadius: 60,
-            spreadRadius: -10,
-          ),
-        ],
+        color: primaryColor.withOpacity(0.03),
+        borderRadius: BorderRadius.circular(32),
+        border: Border.all(color: primaryColor.withOpacity(0.1)),
       ),
       child: isDesktop
           ? Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(flex: 1, child: problemSection),
-                SizedBox(width: AppSpacing.w24),
-                Expanded(flex: 1, child: solutionSection),
-                SizedBox(width: AppSpacing.w24),
-                Expanded(flex: 1, child: appIdentitySection),
+                Expanded(flex: 5, child: productInfoAndFeatures),
+                const SizedBox(width: 48),
+                Expanded(flex: 7, child: largeMockup),
               ],
             )
           : Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                appIdentitySection, // On mobile, maybe show identity first
-                SizedBox(height: AppSpacing.h48),
-                problemSection,
-                SizedBox(height: AppSpacing.h24),
-                solutionSection,
+                productInfoAndFeatures,
+                const SizedBox(height: 48),
+                largeMockup,
               ],
             ),
+    );
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 48),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 40,
+            offset: const Offset(0, 20),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          topProductCard,
+          SizedBox(height: AppSpacing.h24),
+          isDesktop
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: problemCard),
+                    SizedBox(width: AppSpacing.w24),
+                    Expanded(child: existingSolutionsCard),
+                  ],
+                )
+              : Column(
+                  children: [
+                    problemCard,
+                    SizedBox(height: AppSpacing.h24),
+                    existingSolutionsCard,
+                  ],
+                ),
+        ],
+      ),
     ).animate().fadeIn(duration: 800.ms).slideY(begin: 0.1, end: 0, duration: 800.ms, curve: Curves.easeOutQuart);
   }
 
