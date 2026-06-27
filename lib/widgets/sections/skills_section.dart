@@ -123,6 +123,12 @@ class SkillsSection extends StatelessWidget {
                   iconColor: const Color(0xFF007ACC),
                   delay: 700,
                 ),
+                SkillCard(
+                  title: 'SQL',
+                  icon: LucideIcons.database,
+                  iconColor: const Color(0xFFE38C00),
+                  delay: 750,
+                ),
               ],
             ),
           ),
